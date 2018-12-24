@@ -99,7 +99,7 @@ class Score {
     this.latest = 0;
   }
 
-  static calcScore(delta, deltaAtZero = 16, deltaAtMax = 1.5) {
+  static calcScore(delta, deltaAtZero = 16, deltaAtMax = 2) {
     const factor = 10/(deltaAtZero-deltaAtMax);
     return Math.max((deltaAtZero-Math.max(delta, deltaAtMax))*factor, 0);
   }
