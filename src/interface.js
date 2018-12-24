@@ -68,13 +68,13 @@ const userMHVC = {
             parseFloat(document.getElementById("chroma-slider").value)];
   },
   getMunsell: function () {
-    return calcMHVCToMunsell.apply(null, this.get());
+    return calcMHVCToMunsell(...this.get());
   },
   getRGB255: function (clamp = true) {
-    return calcMHVCToRGB255.apply(null, [...this.get(), clamp]);
+    return calcMHVCToRGB255(...this.get(), clamp);
   },
   getHex: function () {
-    return calcMHVCToHex.apply(null, this.get());
+    return calcMHVCToHex(...this.get());
   }
 }
 
@@ -240,7 +240,7 @@ const updateSystemArea = (mhvc, delta, score) => {
     document.getElementById("system-area")
       .insertAdjacentHTML('afterbegin',
                           `<div>Answer:</div>
-<div id="system-label">${calcMHVCToMunsell.apply(null, mhvc)}</div>
+<div id="system-label">${calcMHVCToMunsell(...mhvc)}</div>
 <div>Score:</div>
 <div>${score.toFixed(1)} <span class="weak">(&Delta;E=${delta.toFixed(1)})</span></div>`);
   }
@@ -327,15 +327,14 @@ const forward = function* (e) {
       yield;
       // Answer phase
       const mhvc = userMHVC.get();
-      const delta = calcDeltaE00.apply(null, [...calcMHVCToLab.apply(null, mhvc),
-                                              ...calcMHVCToLab.apply(null, correctMHVC)]);
+      const delta = calcDeltaE00(...calcMHVCToLab(...mhvc), ...calcMHVCToLab(...correctMHVC));
       currentScore.add(Score.calcScore(delta));
       progressSlider.moveTo(i);
       scoreSlider.moveTo(currentScore.get());
       updateSystemArea(correctMHVC, delta, currentScore.latest);
       clearCanvas();
-      updateCanvasBackground.apply(null, userMHVC.getRGB255());
-      fillRightHalfCanvas(calcMHVCToHex.apply(null, correctMHVC));
+      updateCanvasBackground(...userMHVC.getRGB255());
+      fillRightHalfCanvas(calcMHVCToHex(...correctMHVC));
       if (i === 10) {
         break;
       } else {
