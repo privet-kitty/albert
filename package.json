@@ -25,7 +25,8 @@
     "browserify": "^16.2.3",
     "eslint": "^5.9.0",
     "jest": "^23.6.0",
-    "jsdoc": "^3.5.5"
+    "jsdoc": "^3.5.5",
+    "jsdom": "^13.1.0"
   },
   "dependencies": {
     "cached-path-relative": "^1.0.2",

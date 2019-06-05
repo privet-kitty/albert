@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import {clamp} from "./arithmetic.js";
 import {calcMHVCToMunsell,
         calcMHVCToRGB255,
@@ -280,7 +284,7 @@ const getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-const randomMHVCAndRGB255 = () => {
+export const randomMHVCAndRGB255 = () => {
   const hue100 = getRandomInt(0, 101);
   const value = getRandomInt(5, 96)/10;
   for(let i=0; i<100; i++) {
