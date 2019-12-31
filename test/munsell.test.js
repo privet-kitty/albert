@@ -56,10 +56,10 @@ describe('calcMHVCToMunsell()', () => {
 
 describe('calcMunsellToLCHab()', () => {
   test('all integer case', () => {
-    expect(calcMunsellToLCHab("10RP 1/2")).toNearlyEqual([10.408445518542798, 12.62469571978245, 350.56362148026216], 5);
+    expect(calcMunsellToLCHab("10RP 1/2")).toNearlyEqual([10.408445518542798, 12.62469571978245, 350.56362148026216], 4);
   })
   test('all integer case (dark)', () => {
-    expect(calcMunsellToLCHab("10RP 0.2/2")).toNearlyEqual([2.08753985167084, 14.303735097530591, 341.9999157759378], 5);
+    expect(calcMunsellToLCHab("10RP 0.2/2")).toNearlyEqual([2.08753985167084, 14.303735097530591, 341.9999157759378], 4);
   })
 })
 
