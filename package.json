@@ -31,6 +31,8 @@
   },
   "dependencies": {
     "cached-path-relative": "^1.0.2",
-    "esm": "^3.2.25"
+    "esm": "^3.2.25",
+    "minimist": "^1.2.2",
+    "acorn": "^6.0.0"
   }
 }
