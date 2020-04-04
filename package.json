@@ -32,7 +32,7 @@
   "dependencies": {
     "cached-path-relative": "^1.0.2",
     "esm": "^3.2.25",
-    "minimist": "^1.2.2",
+    "minimist": "^1.2.3",
     "acorn": "^6.4.1"
   }
 }
