@@ -9,7 +9,8 @@
     "test": "jest",
     "lint": "eslint src",
     "doc": "jsdoc -c jsdoc-conf.json",
-    "build": "browserify src/interface.js -o lib/interface.js -t babelify"
+    "build": "browserify src/interface.js -o lib/interface.js -t babelify",
+    "preinstall": "npx npm-force-resolutions"
   },
   "jest": {
     "verbose": true
@@ -17,23 +18,20 @@
   "author": "Hugo I.",
   "license": "MPL-2.0",
   "devDependencies": {
-    "@babel/preset-env": "^7.7.7",
+    "@babel/preset-env": "^7.14.1",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babelify": "^8.0.0",
-    "browserify": "^16.5.0",
+    "browserify": "^16.5.2",
     "eslint": "^5.16.0",
-    "jest": "^25.0.0",
-    "jsdoc": "^3.6.3",
+    "jest": "^25.5.4",
+    "jsdoc": "^3.6.6",
     "jsdom": "^13.2.0",
-    "kind-of": ">=6.0.3"
+    "npm-force-resolutions": "0.0.10"
   },
-  "dependencies": {
-    "cached-path-relative": "^1.0.2",
-    "esm": "^3.2.25",
-    "minimist": "^1.2.3",
-    "acorn": "^6.4.1"
+  "resolutions": {
+    "underscore": "^1.12.1"
   }
 }
