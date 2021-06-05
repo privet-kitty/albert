@@ -27,11 +27,9 @@
     "browserify": "^16.5.2",
     "eslint": "^5.16.0",
     "jest": "^25.5.4",
-    "jsdoc": "^3.6.6",
+    "jsdoc": "^3.6.7",
     "jsdom": "^13.2.0",
     "npm-force-resolutions": "0.0.10"
   },
-  "resolutions": {
-    "underscore": "^1.12.1"
-  }
+  "resolutions": {}
 }
