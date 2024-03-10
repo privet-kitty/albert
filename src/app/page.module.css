@@ -33,7 +33,11 @@
   position: absolute;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: linear-gradient(-90deg, black 50%, white 50%);
+  background: linear-gradient(
+    -90deg,
+    var(--even-color) 50%,
+    var(--odd-color) 50%
+  );
   background-clip: text;
   -webkit-text-fill-color: transparent;
   white-space: nowrap;

@@ -142,18 +142,18 @@ const calcScore = (delta: number, deltaAtZero = 16, deltaAtMax = 2): number => {
   return Math.max((deltaAtZero - Math.max(delta, deltaAtMax)) * coef, 0);
 };
 
-const calcRank = (cumScore: number): string => {
-  if (cumScore === 100) {
+const calcRank = (totalScore: number): string => {
+  if (totalScore === 100) {
     return "All perfect";
-  } else if (cumScore >= 90) {
+  } else if (totalScore >= 90) {
     return "Excellent";
-  } else if (cumScore >= 80) {
+  } else if (totalScore >= 80) {
     return "Great";
-  } else if (cumScore >= 70) {
+  } else if (totalScore >= 70) {
     return "Very good";
-  } else if (cumScore >= 60) {
+  } else if (totalScore >= 60) {
     return "Nice";
-  } else if (cumScore >= 40) {
+  } else if (totalScore >= 40) {
     return "Good";
   } else {
     return "Poor";
@@ -173,21 +173,21 @@ export default function Home() {
     userInputColor: initColor,
     userAlternativeColor: initColor,
   });
-  const cumScore = useRef(0);
+  const totalScore = useRef(0);
 
-  const updateCumScore = () => {
+  const updateTotalScore = () => {
     if (appState.type === "answer") {
-      cumScore.current += calcScore(
+      totalScore.current += calcScore(
         calcDeltaE00(appState.userInputColor, appState.colorInQuestion)
       );
     }
     if (isProblemLastState(appState)) {
-      cumScore.current = 0;
+      totalScore.current = 0;
     }
   };
 
   return (
-    <>
+    <main className={styles["main"]}>
       <div className={styles["top-half"]}>
         <h1 className={styles["title"]}>Guess Munsell Code</h1>
         <div className={styles["right-header"]}>
@@ -219,7 +219,7 @@ export default function Home() {
               type="button"
               onClick={() => {
                 dispatch({ type: "forward" });
-                updateCumScore();
+                updateTotalScore();
               }}
               className={styles["transition-button"]}
             >
@@ -231,12 +231,12 @@ export default function Home() {
       <div className={styles["footer"]}>
         {isProblemLastState(appState) && (
           <div className={styles["evaluation"]}>
-            {`Total Score: ${cumScore.current.toFixed(1)} ${calcRank(
-              cumScore.current
+            {`Total Score: ${totalScore.current.toFixed(1)} ${calcRank(
+              totalScore.current
             )}`}
           </div>
         )}
       </div>
-    </>
+    </main>
   );
 }
