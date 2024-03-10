@@ -1,0 +1,61 @@
+dl.row {
+  user-select: none;
+  max-width: 97%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+dl.row dt {
+  clear: both;
+  float: left;
+  margin-right: 1em;
+  width: 10%;
+  min-width: 5.5em;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+dl.row dd {
+  width: 90%;
+  font-weight: bold;
+  margin-top: 0.3em;
+}
+
+.selected {
+  background: var(--odd-color);
+  color: var(--even-color);
+}
+
+.horizontal-table {
+  user-select: none;
+  border: solid 2px var(--odd-color);
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.horizontal-table td {
+  cursor: pointer;
+  border: solid 2px white;
+  width: 3em;
+}
+
+.slider {
+  float: left;
+  width: 70%;
+  border-radius: 0;
+  margin-left: 0;
+  margin-top: 0.5em;
+  margin-right: 1em;
+  background: var(--odd-color);
+  outline: none;
+}
+
+.slider::-moz-range-thumb,
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: var(--even-color);
+  border: 0;
+  cursor: pointer;
+}
