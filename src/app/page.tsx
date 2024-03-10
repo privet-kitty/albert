@@ -168,7 +168,7 @@ const initColor: MunsellColor = {
   chroma: 4,
 };
 
-export const Home = () => {
+export default function Home() {
   const [appState, dispatch] = useReducer(reduceAppState, {
     type: "freeMode",
     userInputColor: initColor,
@@ -248,6 +248,4 @@ export const Home = () => {
       </div>
     </main>
   );
-};
-
-export default Home;
+}
