@@ -1,35 +1,44 @@
 {
   "name": "albert",
   "version": "0.1.0",
-  "description": "Training tool for colorimetry",
   "private": true,
-  "main": "interface.js",
-  "sourceType": "module",
+  "description": "Training tool for colorimetry",
   "scripts": {
     "test": "jest",
-    "lint": "eslint src",
-    "doc": "jsdoc -c jsdoc-conf.json",
-    "build": "browserify src/interface.js -o lib/interface.js -t babelify",
-    "preinstall": "npx npm-force-resolutions"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "jest": {
-    "verbose": true
+    "moduleFileExtensions": [
+      "js",
+      "ts",
+      "d.ts"
+    ],
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "verbose": true,
+    "collectCoverageFrom": [
+      "src/**/*.ts"
+    ]
   },
-  "author": "Hugo I.",
-  "license": "MPL-2.0",
+  "dependencies": {
+    "munsell": "^1.1.3",
+    "next": "14.1.3",
+    "react": "^18",
+    "react-dom": "^18"
+  },
   "devDependencies": {
-    "@babel/preset-env": "^7.14.1",
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-polyfill": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babelify": "^8.0.0",
-    "browserify": "^16.5.2",
-    "eslint": "^5.16.0",
-    "jest": "^25.5.4",
-    "jsdoc": "^3.6.7",
-    "jsdom": "^13.2.0",
-    "npm-force-resolutions": "0.0.10"
-  },
-  "resolutions": {}
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.1.3",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5"
+  }
 }

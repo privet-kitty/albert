@@ -1,0 +1,46 @@
+.weak {
+  color: var(--vague-even-color);
+}
+
+.color-area-container {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.canvas-area {
+  display: table-cell;
+  width: 300px;
+}
+
+.color-canvas {
+  margin-top: 6em;
+  margin-bottom: 1em;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.user-color-area {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: right;
+  padding-right: 0.5em;
+  color: var(--odd-color);
+  font-weight: bold;
+  font-size: 2em;
+}
+
+.system-color-area {
+  font-weight: bold;
+  font-family: inherit;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: left;
+  padding-left: 0.5em;
+  color: var(--even-color);
+  font-size: 2em;
+}
+
+.color-label {
+  font-size: 1.25em;
+}

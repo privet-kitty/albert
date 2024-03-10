@@ -1,8 +1,6 @@
 # Albert - simple training tool for colorimetry
 
-[![Build Status](https://api.travis-ci.org/privet-kitty/albert.svg?branch=master)](https://travis-ci.org/privet-kitty/albert)
-
-This is a simple training tool to guess the Munsell Color code of a given color. Currently it is supposed that your screen is calibrated to sRGB.
+This is a simple training tool to guess the Munsell Color code of a given color. Currently it assumes that your screen is calibrated to sRGB.
 
 https://privet-kitty.github.io/albert/
 
@@ -17,4 +15,4 @@ The score of your guess is computed based on CIEDE2000.
 Tested on Firefox, Chrome, and Edge.
 
 ## Copyright
-Copyright (c) 2018 Hugo I.
+Copyright (c) 2018-2024 Hugo Sansaqua.
