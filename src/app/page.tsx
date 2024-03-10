@@ -12,6 +12,7 @@ import {
 } from "@/lib/color";
 import { rgb255ToMhvc } from "munsell";
 import { calcDeltaE00 } from "@/lib/ciede2000";
+import ProgressBar from "@/components/ProgressBar";
 
 type AppState =
   | {
@@ -93,7 +94,7 @@ const getNextState = (appState: AppState): AppState => {
 const getButtonLabel = (appState: AppState): string => {
   switch (appState.type) {
     case "question":
-      return "Answer";
+      return "Submit";
     case "answer":
       if (appState.index + 1 >= N_PROBLEMS) {
         return "Finish";
@@ -167,7 +168,7 @@ const initColor: MunsellColor = {
   chroma: 4,
 };
 
-export default function Home() {
+export const Home = () => {
   const [appState, dispatch] = useReducer(reduceAppState, {
     type: "freeMode",
     userInputColor: initColor,
@@ -229,6 +230,14 @@ export default function Home() {
         </div>
       </div>
       <div className={styles["footer"]}>
+        <ProgressBar
+          value={
+            appState.type === "freeMode"
+              ? 0
+              : appState.index + (appState.type === "answer" ? 1 : 0)
+          }
+          maxVal={N_PROBLEMS}
+        />
         {isProblemLastState(appState) && (
           <div className={styles["evaluation"]}>
             {`Total Score: ${totalScore.current.toFixed(1)} ${calcRank(
@@ -239,4 +248,6 @@ export default function Home() {
       </div>
     </main>
   );
-}
+};
+
+export default Home;
