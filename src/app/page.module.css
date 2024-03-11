@@ -80,6 +80,7 @@
   font-size: 1.5em;
   border: solid 2px var(--odd-color);
   padding: 0.1em 0.5em 0.2em 0.5em;
+  margin-bottom: 0.5em;
   cursor: pointer;
   background: inherit;
   color: inherit;
@@ -98,7 +99,7 @@
 }
 
 .evaluation {
-  font-size: 2.25em;
+  font-size: 2em;
   font-weight: bold;
   position: absolute;
   right: 0;

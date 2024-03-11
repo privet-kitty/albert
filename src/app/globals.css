@@ -6,6 +6,7 @@
   --vague-even-color: rgb(0, 0, 0, 0.4);
   --odd-color: rgb(255, 255, 255);
   --vague-odd-color: rgb(255, 255, 255, 0.4);
+  --font-standard-size: min(1em, 4vw);
 }
 
 html,
