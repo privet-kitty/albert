@@ -10,7 +10,7 @@
 
 .canvas-cell {
   display: table-cell;
-  width: min(300px, 33vw);
+  width: min(300px, 40vw);
 }
 
 .color-canvas {
@@ -18,7 +18,7 @@
   margin-bottom: 1em;
   margin-right: auto;
   margin-left: auto;
-  width: min(300px, 33vw);
+  width: min(300px, 40vw);
   height: 300px;
 }
 
@@ -30,7 +30,7 @@
   padding-right: 0.5em;
   color: var(--odd-color);
   font-family: inherit;
-  font-size: min(2em, 5vw);
+  font-size: min(2em, 4.5vw);
   font-weight: bold;
   line-break: loose;
 }
@@ -43,7 +43,7 @@
   padding-left: 0.5em;
   color: var(--even-color);
   font-family: inherit;
-  font-size: min(2em, 5vw);
+  font-size: min(2em, 4.5vw);
   font-weight: bold;
   line-break: loose;
 }

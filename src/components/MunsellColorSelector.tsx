@@ -77,7 +77,7 @@ const Slider = (props: SliderProps) => {
           props.onChange(newValue);
         }}
       />
-      <div>{value}</div>
+      <div>{value.toFixed(1)}</div>
     </div>
   );
 };

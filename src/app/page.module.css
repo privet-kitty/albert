@@ -38,7 +38,7 @@
   -webkit-text-fill-color: transparent;
   white-space: nowrap;
   font-size: min(4em, 9vw);
-  padding-top: min(0.5em, 1.5vh);
+  padding-top: 1rem;
   z-index: 8;
 }
 
@@ -52,7 +52,7 @@
 .right-header a {
   color: var(--vague-even-color);
   text-decoration: none;
-  font-size: 1.25em;
+  font-size: 1em;
 }
 
 .right-header a:hover {

@@ -1,6 +1,7 @@
 :root {
   --max-width: 1000px;
   --font-main: "Open Sans", sans-serif;
+  --title-font-size: min(4em, 9vw);
 
   --even-color: rgb(0, 0, 0);
   --vague-even-color: rgb(0, 0, 0, 0.4);

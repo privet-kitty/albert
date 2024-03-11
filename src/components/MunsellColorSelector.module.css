@@ -1,6 +1,6 @@
 dl.row {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template: auto / 15% 85%;
   max-width: 97%;
   margin-right: auto;
   margin-left: auto;
@@ -8,15 +8,15 @@ dl.row {
 }
 
 dl.row dt {
-  width: 10%;
   font-weight: bold;
   margin-right: 0.5em;
+  grid-column: 1;
 }
 
 dl.row dd {
-  width: 80%;
   margin-bottom: 0.2em;
   font-weight: bold;
+  grid-column: 2;
 }
 
 .selected {
@@ -45,7 +45,7 @@ dl.row dd {
 
 .slider {
   float: left;
-  width: 70%;
+  width: 80%;
   border-radius: 0;
   margin-left: 0;
   margin-right: 1em;
