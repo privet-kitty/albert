@@ -1,6 +1,5 @@
 :root {
-  --max-width: 1100px;
-  --border-radius: 12px;
+  --max-width: 1000px;
   --font-main: "Open Sans", sans-serif;
 
   --even-color: rgb(0, 0, 0);
@@ -16,11 +15,14 @@ body {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
   background: var(--even-color);
   color: var(--odd-color);
   margin: 0;
   font-family: var(--font-main);
   image-rendering: pixelated;
+  height: 100vh;
 }
 
 a {

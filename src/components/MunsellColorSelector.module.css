@@ -1,24 +1,22 @@
 dl.row {
-  user-select: none;
+  display: flex;
+  flex-wrap: wrap;
   max-width: 97%;
   margin-right: auto;
   margin-left: auto;
+  user-select: none;
 }
 
 dl.row dt {
-  clear: both;
-  float: left;
-  margin-right: 1em;
   width: 10%;
-  min-width: 5.5em;
   font-weight: bold;
-  white-space: nowrap;
+  margin-right: 0.5em;
 }
 
 dl.row dd {
-  width: 90%;
+  width: 80%;
+  margin-bottom: 0.2em;
   font-weight: bold;
-  margin-top: 0.3em;
 }
 
 .selected {
@@ -39,18 +37,32 @@ dl.row dd {
   width: 3em;
 }
 
+.slider-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .slider {
   float: left;
   width: 70%;
   border-radius: 0;
   margin-left: 0;
-  margin-top: 0.5em;
   margin-right: 1em;
   background: var(--odd-color);
   outline: none;
+  appearance: none;
 }
 
-.slider::-moz-range-thumb,
+.slider::-moz-range-thumb {
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: var(--even-color);
+  border: 0;
+  cursor: pointer;
+}
+
 .slider::-webkit-slider-thumb {
   appearance: none;
   width: 25px;

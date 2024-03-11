@@ -188,7 +188,7 @@ export default function Home() {
   };
 
   return (
-    <main className={styles["main"]}>
+    <main>
       <div className={styles["top-half"]}>
         <h1 className={styles["title"]}>Guess Munsell Code</h1>
         <div className={styles["right-header"]}>

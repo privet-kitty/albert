@@ -8,9 +8,9 @@
   width: 100%;
 }
 
-.canvas-area {
+.canvas-cell {
   display: table-cell;
-  width: 300px;
+  width: min(300px, 30vw);
 }
 
 .color-canvas {
@@ -18,27 +18,34 @@
   margin-bottom: 1em;
   margin-right: auto;
   margin-left: auto;
+  width: min(300px, 30vw);
+  height: 300px;
 }
 
-.user-color-area {
+.user-color-cell {
+  position: relative;
   display: table-cell;
   vertical-align: middle;
   text-align: right;
   padding-right: 0.5em;
   color: var(--odd-color);
-  font-weight: bold;
+  font-family: inherit;
   font-size: 2em;
+  font-weight: bold;
+  line-break: loose;
 }
 
-.system-color-area {
-  font-weight: bold;
-  font-family: inherit;
+.system-color-cell {
+  position: relative;
   display: table-cell;
   vertical-align: middle;
   text-align: left;
   padding-left: 0.5em;
   color: var(--even-color);
+  font-family: inherit;
   font-size: 2em;
+  font-weight: bold;
+  line-break: loose;
 }
 
 .color-label {

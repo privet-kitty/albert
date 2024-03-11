@@ -10,16 +10,12 @@ export type Direction = (typeof Direction)[number];
 export type ColorCanvasProps = {
   userHex: string;
   systemHex?: string;
-  width: number;
-  height: number;
   systemColorDirection: Direction;
 };
 
 export const ColorCanvas = ({
   userHex,
   systemHex,
-  width,
-  height,
   systemColorDirection,
 }: ColorCanvasProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -47,8 +43,6 @@ export const ColorCanvas = ({
   return (
     <canvas
       ref={canvasRef}
-      width={width}
-      height={height}
       style={{ backgroundColor: userHex }}
       className={styles["color-canvas"]}
     />
@@ -87,22 +81,20 @@ export const ColorDisplayPanel = ({
 
   return (
     <div className={styles["color-area-container"]}>
-      <div className={styles["user-color-area"]}>
-        <div>Your choice:</div>
+      <div className={styles["user-color-cell"]}>
+        <div>Your input:</div>
         <div className={styles["color-label"]}>
           {toMunsell(describedColor1)}
         </div>
       </div>
-      <div className={styles["canvas-area"]}>
+      <div className={styles["canvas-cell"]}>
         <ColorCanvas
           userHex={toHex(paintedColor1)}
           systemHex={color2 && toHex(color2)}
-          width={300}
-          height={300}
           systemColorDirection="right"
         />
       </div>
-      <div className={styles["system-color-area"]}>
+      <div className={styles["system-color-cell"]}>
         {color2 && (
           <>
             <div>Answer:</div>

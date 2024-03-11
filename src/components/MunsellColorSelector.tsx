@@ -63,7 +63,7 @@ type SliderProps = {
 const Slider = (props: SliderProps) => {
   const [value, setValue] = useState(props.value);
   return (
-    <>
+    <div className={styles["slider-container"]}>
       <input
         className={styles["slider"]}
         type="range"
@@ -78,7 +78,7 @@ const Slider = (props: SliderProps) => {
         }}
       />
       <div>{value}</div>
-    </>
+    </div>
   );
 };
 
@@ -110,7 +110,7 @@ export const MunsellColorSelector = ({
             onChange={(hueName) => updateColor({ hueName })}
           />
         </dd>
-        <dt>Hue prefix</dt>
+        <dt>Prefix</dt>
         <dd>
           <HorizontalTable
             options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}

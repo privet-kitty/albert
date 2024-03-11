@@ -1,14 +1,10 @@
-.main {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  min-height: 100vh;
-}
-
 .top-half {
   flex: 0 1 auto;
-  background: linear-gradient(90deg, black 50%, white 50%);
+  background: linear-gradient(
+    90deg,
+    var(--even-color) 50%,
+    var(--odd-color) 50%
+  );
   width: 100%;
 }
 
@@ -41,13 +37,16 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
   white-space: nowrap;
-  font-size: 4em;
+  font-size: min(4em, 9vw);
+  padding-top: min(0.5em, 1.5vh);
+  z-index: 8;
 }
 
 .right-header {
   position: absolute;
   right: 0;
   margin: 0;
+  z-index: 10;
 }
 
 .right-header a {
@@ -84,6 +83,11 @@
   cursor: pointer;
   background: inherit;
   color: inherit;
+}
+
+.transition-button:active {
+  background: var(--odd-color);
+  color: var(--even-color);
 }
 
 .footer {
