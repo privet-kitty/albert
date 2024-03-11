@@ -145,7 +145,7 @@ const calcScore = (delta: number, deltaAtZero = 16, deltaAtMax = 2): number => {
 
 const calcRank = (totalScore: number): string => {
   if (totalScore === 100) {
-    return "All perfect";
+    return "Perfect";
   } else if (totalScore >= 90) {
     return "Excellent";
   } else if (totalScore >= 80) {
@@ -153,9 +153,9 @@ const calcRank = (totalScore: number): string => {
   } else if (totalScore >= 70) {
     return "Very good";
   } else if (totalScore >= 60) {
-    return "Nice";
-  } else if (totalScore >= 40) {
     return "Good";
+  } else if (totalScore >= 40) {
+    return "Fair";
   } else {
     return "Poor";
   }
