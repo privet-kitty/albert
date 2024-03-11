@@ -10,8 +10,9 @@
     "start": "next start",
     "lint": "next lint",
     "serve": "serve out",
-    "static-build": "cross-env ALBERT_STATIC=true next build",
-    "static-serve": "npm run static-build && npm run serve"
+    "build-static": "cross-env ALBERT_STATIC=true next build",
+    "serve-static": "npm run static-build && npm run serve",
+    "build-prod": "cross-env ALBERT_ENV=production next build"
   },
   "jest": {
     "moduleFileExtensions": [
