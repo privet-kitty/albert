@@ -11,7 +11,7 @@ describe("calcScore", () => {
     expect(calcScore(17)).toBe(0);
   });
 
-  it("should return a value between 0 and 10 when 2 < delta < 16", () => {
+  it("should return a value in (0, 10) when 2 < delta < 16", () => {
     expect(calcScore(3)).toBeGreaterThan(0);
     expect(calcScore(3)).toBeLessThan(10);
     expect(calcScore(15)).toBeGreaterThan(0);
