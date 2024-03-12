@@ -21,7 +21,7 @@ body {
   flex-direction: column;
   background: var(--even-color);
   color: var(--odd-color);
-  margin: 0;
+  margin: 0 2px 0 2px;
   font-family: var(--font-main);
   image-rendering: pixelated;
   height: 100vh;

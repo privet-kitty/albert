@@ -26,14 +26,14 @@ dl.row dd {
 
 .horizontal-table {
   user-select: none;
-  border: solid 2px var(--odd-color);
+  border: solid 1px var(--odd-color);
   border-collapse: collapse;
   text-align: center;
 }
 
 .horizontal-table td {
   cursor: pointer;
-  border: solid 2px white;
+  border: solid 1px var(--odd-color);
   width: 3em;
 }
 
@@ -58,7 +58,7 @@ dl.row dd {
   appearance: none;
   width: 25px;
   height: 25px;
-  background: var(--even-color);
+  background: var(--vague-even-color);
   border: 0;
   cursor: pointer;
 }
@@ -67,7 +67,7 @@ dl.row dd {
   appearance: none;
   width: 25px;
   height: 25px;
-  background: var(--even-color);
+  background: var(--vague-even-color);
   border: 0;
   cursor: pointer;
 }

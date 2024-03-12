@@ -164,8 +164,8 @@ const calcRank = (totalScore: number): string => {
 const initColor: MunsellColor = {
   hueName: "PB",
   huePrefix: 5,
-  value: 2,
-  chroma: 4,
+  value: 3,
+  chroma: 5,
 };
 
 export default function Home() {
