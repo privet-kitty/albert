@@ -58,7 +58,7 @@ dl.row dd {
   appearance: none;
   width: 1.5rem;
   height: 1.5rem;
-  background: var(--vague-even-color);
+  background: var(--semi-even-color);
   border: 0;
   cursor: pointer;
 }
@@ -67,7 +67,7 @@ dl.row dd {
   appearance: none;
   width: 1.25rem;
   height: 1.25rem;
-  background: var(--vague-even-color);
+  background: var(--semi-even-color);
   border: 0;
   cursor: pointer;
 }

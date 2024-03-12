@@ -1,12 +1,12 @@
 :root {
   --max-width: 1000px;
   --font-main: "Open Sans", sans-serif;
-  --title-font-size: min(4em, 9vw);
+  --title-font-size: min(4em, 8vw);
 
   --even-color: rgb(0, 0, 0);
-  --vague-even-color: rgb(0, 0, 0, 0.4);
+  --semi-even-color: rgb(0, 0, 0, 0.4);
   --odd-color: rgb(255, 255, 255);
-  --vague-odd-color: rgb(255, 255, 255, 0.4);
+  --semi-odd-color: rgb(255, 255, 255, 0.4);
   --font-standard-size: min(1em, 4vw);
 }
 

@@ -6,6 +6,6 @@
 
 .progress-bar_filler {
   height: 100%;
-  background-color: var(--vague-odd-color);
+  background-color: var(--semi-odd-color);
   transition: width 0.2s ease-in;
 }
