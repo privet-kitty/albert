@@ -14,8 +14,8 @@
 }
 
 .color-canvas {
-  margin-top: 6em;
-  margin-bottom: 1em;
+  margin-top: calc(var(--title-font-size) * 1.6);
+  margin-bottom: 1rem;
   margin-right: auto;
   margin-left: auto;
   width: min(300px, 40vw);
@@ -30,7 +30,7 @@
   padding-right: 0.5em;
   color: var(--odd-color);
   font-family: inherit;
-  font-size: min(2em, 4.5vw);
+  font-size: min(2em, 4vw);
   font-weight: bold;
   line-break: loose;
 }
@@ -43,7 +43,7 @@
   padding-left: 0.5em;
   color: var(--even-color);
   font-family: inherit;
-  font-size: min(2em, 4.5vw);
+  font-size: min(2em, 4vw);
   font-weight: bold;
   line-break: loose;
 }

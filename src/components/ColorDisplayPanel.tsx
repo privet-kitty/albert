@@ -102,12 +102,15 @@ export const ColorDisplayPanel = ({
               {color2 && toMunsell(color2)}
             </div>
             {scoreInfo && (
-              <div>
-                Score: {scoreInfo.score.toFixed(1)}{" "}
-                <span
-                  className={styles["weak"]}
-                >{`(ΔE=${scoreInfo.delta.toFixed(1)})`}</span>
-              </div>
+              <>
+                <div>Score:</div>
+                <div>
+                  {scoreInfo.score.toFixed(1)}{" "}
+                  <span
+                    className={styles["weak"]}
+                  >{`(ΔE=${scoreInfo.delta.toFixed(1)})`}</span>
+                </div>
+              </>
             )}
           </>
         )}

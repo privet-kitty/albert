@@ -190,7 +190,9 @@ export default function Home() {
   return (
     <main>
       <div className={styles["top-half"]}>
-        <h1 className={styles["title"]}>Guess Munsell Code</h1>
+        <div className={styles["relative-container"]}>
+          <h1 className={styles["title"]}>Guess Munsell Code</h1>
+        </div>
         <div className={styles["right-header"]}>
           <a href="https://github.com/privet-kitty/albert/blob/master/README.md">
             README

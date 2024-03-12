@@ -12,9 +12,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    // FIXME: The language of the content is English, but I leave it for now
-    // to preserve the appearance.
-    <html lang="ja">
+    <html lang="en">
       <body>{children}</body>
     </html>
   );
