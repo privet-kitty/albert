@@ -12,7 +12,7 @@ export const ProgressBar = ({ value, maxVal }: ProgressBarProps) => {
       <div
         className={styles["progress-bar_filler"]}
         style={{ width: `${width}%` }}
-      ></div>
+      />
     </div>
   );
 };

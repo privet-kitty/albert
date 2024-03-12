@@ -7,7 +7,7 @@ describe("calcDeltaE00", () => {
 
   beforeAll(() => {
     const lines = fs
-      .readFileSync("static/ciede2000-test-data.csv", {
+      .readFileSync("fixture/ciede2000-test-data.csv", {
         encoding: "ascii",
       })
       .trim()

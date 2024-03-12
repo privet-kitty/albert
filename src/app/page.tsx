@@ -13,6 +13,7 @@ import {
 import { rgb255ToMhvc } from "munsell";
 import { calcDeltaE00 } from "@/lib/ciede2000";
 import ProgressBar from "@/components/ProgressBar";
+import { calcRank, calcScore } from "@/lib/score";
 
 type AppState =
   | {
@@ -58,6 +59,14 @@ const isProblemLastState = (appState: AppState): boolean => {
 };
 
 const getNextState = (appState: AppState): AppState => {
+  const nextProblemState = (): AppState => {
+    return {
+      ...appState,
+      type: "question",
+      index: appState.type === "freeMode" ? 0 : appState.index + 1,
+      colorInQuestion: randomMunsellColor(),
+    };
+  };
   switch (appState.type) {
     case "question":
       return {
@@ -72,26 +81,16 @@ const getNextState = (appState: AppState): AppState => {
           type: "freeMode",
         };
       } else {
-        return {
-          ...appState,
-          type: "question",
-          index: appState.index + 1,
-          colorInQuestion: randomMunsellColor(),
-        };
+        return nextProblemState();
       }
     case "freeMode":
-      return {
-        ...appState,
-        type: "question",
-        index: 0,
-        colorInQuestion: randomMunsellColor(),
-      };
+      return nextProblemState();
     default:
       throw new Error("Invalid appState");
   }
 };
 
-const getButtonLabel = (appState: AppState): string => {
+const getButtonText = (appState: AppState): string => {
   switch (appState.type) {
     case "question":
       return "Submit";
@@ -135,29 +134,6 @@ const getColorDisplayPanelProps = (appState: AppState) => {
       };
     default:
       throw new Error("Invalid appState");
-  }
-};
-
-const calcScore = (delta: number, deltaAtZero = 16, deltaAtMax = 2): number => {
-  const coef = 10 / (deltaAtZero - deltaAtMax);
-  return Math.max((deltaAtZero - Math.max(delta, deltaAtMax)) * coef, 0);
-};
-
-const calcRank = (totalScore: number): string => {
-  if (totalScore === 100) {
-    return "Perfect";
-  } else if (totalScore >= 90) {
-    return "Excellent";
-  } else if (totalScore >= 80) {
-    return "Great";
-  } else if (totalScore >= 70) {
-    return "Very good";
-  } else if (totalScore >= 60) {
-    return "Good";
-  } else if (totalScore >= 40) {
-    return "Fair";
-  } else {
-    return "Poor";
   }
 };
 
@@ -226,7 +202,7 @@ export default function Home() {
               }}
               className={styles["transition-button"]}
             >
-              {getButtonLabel(appState)}
+              {getButtonText(appState)}
             </button>
           </div>
         </div>
