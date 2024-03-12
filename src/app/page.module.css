@@ -24,6 +24,12 @@
   position: relative;
 }
 
+.header-container {
+  position: relative;
+  margin-bottom: calc(var(--title-font-size) * 1.5);
+  margin-top: 0.8rem;
+}
+
 .title {
   float: left;
   position: absolute;
@@ -38,7 +44,6 @@
   -webkit-text-fill-color: transparent;
   white-space: nowrap;
   font-size: min(4em, 8vw);
-  padding-top: 1rem;
   z-index: 8;
 }
 

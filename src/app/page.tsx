@@ -190,7 +190,7 @@ export default function Home() {
   return (
     <main>
       <div className={styles["top-half"]}>
-        <div className={styles["relative-container"]}>
+        <div className={styles["header-container"]}>
           <h1 className={styles["title"]}>Guess Munsell Code</h1>
         </div>
         <div className={styles["right-header"]}>
