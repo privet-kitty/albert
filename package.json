@@ -11,7 +11,7 @@
     "lint": "next lint",
     "serve": "serve out",
     "build-static": "cross-env ALBERT_STATIC=true next build",
-    "serve-static": "npm run static-build && npm run serve",
+    "serve-static": "npm run build-static && npm run serve",
     "build-prod": "cross-env ALBERT_ENV=production next build"
   },
   "jest": {
