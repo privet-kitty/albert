@@ -8,87 +8,16 @@ import {
   MunsellColor,
   isOutOfGamut,
   munsellColorToMunsellHvc,
-  munsellHvcToMunsellColor,
 } from "@/lib/color";
-import { rgb255ToMhvc } from "munsell";
 import { calcDeltaE00 } from "@/lib/ciede2000";
 import ProgressBar from "@/components/ProgressBar";
 import { calcRank, calcScore } from "@/lib/score";
-
-type AppState =
-  | {
-      type: "freeMode";
-      userInputColor: MunsellColor;
-      userAlternativeColor: MunsellColor; // alternative color for the case of out-of-gamut
-    }
-  | {
-      type: "question" | "answer";
-      index: number;
-      userInputColor: MunsellColor;
-      userAlternativeColor: MunsellColor;
-      colorInQuestion: MunsellColor;
-    };
-
-const reduceAppState = (
-  appState: AppState,
-  action: { type: "forward" } | { type: "selectColor"; color: MunsellColor }
-): AppState => {
-  if (action.type === "forward") {
-    return getNextState(appState);
-  } else {
-    return {
-      ...appState,
-      userInputColor: action.color,
-      userAlternativeColor: isOutOfGamut(action.color)
-        ? appState.userAlternativeColor
-        : action.color,
-    };
-  }
-};
-
-const N_PROBLEMS = 10;
-
-const randomMunsellColor = (): MunsellColor => {
-  const rand255 = () => Math.min(Math.floor(Math.random() * 256), 255);
-  const [hue100, value, chroma] = rgb255ToMhvc(rand255(), rand255(), rand255());
-  return munsellHvcToMunsellColor({ hue100, value, chroma });
-};
-
-const isProblemLastState = (appState: AppState): boolean => {
-  return appState.type === "answer" && appState.index + 1 >= N_PROBLEMS;
-};
-
-const getNextState = (appState: AppState): AppState => {
-  const nextProblemState = (): AppState => {
-    return {
-      ...appState,
-      type: "question",
-      index: appState.type === "freeMode" ? 0 : appState.index + 1,
-      colorInQuestion: randomMunsellColor(),
-    };
-  };
-  switch (appState.type) {
-    case "question":
-      return {
-        ...appState,
-        type: "answer",
-        index: appState.index,
-      };
-    case "answer":
-      if (isProblemLastState(appState)) {
-        return {
-          ...appState,
-          type: "freeMode",
-        };
-      } else {
-        return nextProblemState();
-      }
-    case "freeMode":
-      return nextProblemState();
-    default:
-      throw new Error("Invalid appState");
-  }
-};
+import {
+  AppState,
+  N_PROBLEMS,
+  isProblemLastState,
+  reduceAppState,
+} from "@/lib/appState";
 
 const getButtonText = (appState: AppState): string => {
   switch (appState.type) {
