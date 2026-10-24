@@ -1,6 +1,5 @@
-import { calcDeltaE00 } from "@/lib/ciede2000";
-import { MunsellHVC, isOutOfGamut } from "@/lib/color";
-import { mhvcToHex, mhvcToLab, mhvcToMunsell } from "munsell";
+import { MunsellHVC } from "@/lib/color";
+import { mhvcToHex, mhvcToMunsell } from "munsell";
 import { useEffect, useRef } from "react";
 import styles from "./ColorDisplayPanel.module.css";
 
@@ -74,10 +73,6 @@ export const ColorDisplayPanel = ({
     mhvcToHex(color.hue100, color.value, color.chroma);
   const toMunsell = (color: MunsellHVC) =>
     mhvcToMunsell(color.hue100, color.value, color.chroma, 1);
-  const toLab = (color: MunsellHVC) => {
-    const [l, a, b] = mhvcToLab(color.hue100, color.value, color.chroma);
-    return { l, a, b };
-  };
 
   return (
     <div className={styles["color-area-container"]}>

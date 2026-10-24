@@ -1,9 +1,4 @@
-import {
-  HueNames,
-  MunsellColor,
-  isOutOfGamut,
-  munsellColorToMunsellHvc,
-} from "@/lib/color";
+import { HueNames, MunsellColor } from "@/lib/color";
 import { useState } from "react";
 import styles from "./MunsellColorSelector.module.css";
 

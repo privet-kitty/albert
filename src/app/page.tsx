@@ -3,7 +3,7 @@
 import styles from "./page.module.css";
 import MunsellColorSelector from "@/components/MunsellColorSelector";
 import { ColorDisplayPanel } from "@/components/ColorDisplayPanel";
-import { useReducer, useRef } from "react";
+import { useReducer, useState } from "react";
 import {
   MunsellColor,
   isOutOfGamut,
@@ -150,16 +150,17 @@ export default function Home() {
     userInputColor: initColor,
     userAlternativeColor: initColor,
   });
-  const totalScore = useRef(0);
+  const [totalScore, setTotalScore] = useState(0);
 
   const updateTotalScore = () => {
     if (appState.type === "answer") {
-      totalScore.current += calcScore(
+      const score = calcScore(
         calcDeltaE00(appState.userInputColor, appState.colorInQuestion)
       );
+      setTotalScore((prev) => prev + score);
     }
     if (isProblemLastState(appState)) {
-      totalScore.current = 0;
+      setTotalScore(0);
     }
   };
 
@@ -218,9 +219,7 @@ export default function Home() {
         />
         {isProblemLastState(appState) && (
           <div className={styles["evaluation"]}>
-            {`Total Score: ${totalScore.current.toFixed(1)} ${calcRank(
-              totalScore.current
-            )}`}
+            {`Total Score: ${totalScore.toFixed(1)} ${calcRank(totalScore)}`}
           </div>
         )}
       </div>
