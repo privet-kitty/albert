@@ -1,5 +1,14 @@
 import { rgb255ToMhvc } from "munsell";
+import { calcDeltaE00 } from "./ciede2000";
 import { MunsellColor, isOutOfGamut, munsellHvcToMunsellColor } from "./color";
+import { calcScore } from "./score";
+
+export type Submission = {
+  inputColor: MunsellColor;
+  alternativeColor: MunsellColor;
+  delta: number;
+  score: number;
+};
 
 export type AppState =
   | {
@@ -8,11 +17,21 @@ export type AppState =
       userAlternativeColor: MunsellColor; // alternative color for the case of out-of-gamut
     }
   | {
-      type: "question" | "answer";
+      type: "question";
       index: number;
       userInputColor: MunsellColor;
       userAlternativeColor: MunsellColor;
       colorInQuestion: MunsellColor;
+      totalScore: number; // sum of the scores of the problems submitted so far
+    }
+  | {
+      type: "answer";
+      index: number;
+      userInputColor: MunsellColor;
+      userAlternativeColor: MunsellColor;
+      colorInQuestion: MunsellColor;
+      totalScore: number;
+      submission: Submission; // fixed on submit; later input does not change it
     };
 
 export const reduceAppState = (
@@ -45,32 +64,47 @@ export const isProblemLastState = (appState: AppState): boolean => {
 };
 
 const getNextState = (appState: AppState): AppState => {
-  const nextProblemState = (): AppState => {
+  const nextProblemState = (index: number, totalScore: number): AppState => {
     return {
-      ...appState,
       type: "question",
-      index: appState.type === "freeMode" ? 0 : appState.index + 1,
+      index,
+      userInputColor: appState.userInputColor,
+      userAlternativeColor: appState.userAlternativeColor,
       colorInQuestion: randomMunsellColor(),
+      totalScore,
     };
   };
   switch (appState.type) {
-    case "question":
+    case "question": {
+      const delta = calcDeltaE00(
+        appState.userInputColor,
+        appState.colorInQuestion
+      );
+      const score = calcScore(delta);
       return {
         ...appState,
         type: "answer",
-        index: appState.index,
+        totalScore: appState.totalScore + score,
+        submission: {
+          inputColor: appState.userInputColor,
+          alternativeColor: appState.userAlternativeColor,
+          delta,
+          score,
+        },
       };
+    }
     case "answer":
       if (isProblemLastState(appState)) {
         return {
-          ...appState,
           type: "freeMode",
+          userInputColor: appState.userInputColor,
+          userAlternativeColor: appState.userAlternativeColor,
         };
       } else {
-        return nextProblemState();
+        return nextProblemState(appState.index + 1, appState.totalScore);
       }
     case "freeMode":
-      return nextProblemState();
+      return nextProblemState(0, 0);
     default:
       throw new Error("Invalid appState");
   }

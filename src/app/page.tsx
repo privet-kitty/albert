@@ -3,15 +3,14 @@
 import styles from "./page.module.css";
 import MunsellColorSelector from "@/components/MunsellColorSelector";
 import { ColorDisplayPanel } from "@/components/ColorDisplayPanel";
-import { useReducer, useState } from "react";
+import { useReducer } from "react";
 import {
   MunsellColor,
   isOutOfGamut,
   munsellColorToMunsellHvc,
 } from "@/lib/color";
-import { calcDeltaE00 } from "@/lib/ciede2000";
 import ProgressBar from "@/components/ProgressBar";
-import { calcRank, calcScore } from "@/lib/score";
+import { calcRank } from "@/lib/score";
 import {
   AppState,
   N_PROBLEMS,
@@ -43,17 +42,14 @@ const getColorDisplayPanelProps = (appState: AppState) => {
         paintedColor1: munsellColorToMunsellHvc(appState.colorInQuestion),
       };
     case "answer":
-      const delta = calcDeltaE00(
-        appState.userInputColor,
-        appState.colorInQuestion
-      );
+      const { submission } = appState;
       return {
-        describedColor1: munsellColorToMunsellHvc(appState.userInputColor),
-        paintedColor1: munsellColorToMunsellHvc(appState.userAlternativeColor),
+        describedColor1: munsellColorToMunsellHvc(submission.inputColor),
+        paintedColor1: munsellColorToMunsellHvc(submission.alternativeColor),
         color2: munsellColorToMunsellHvc(appState.colorInQuestion),
         scoreInfo: {
-          delta,
-          score: calcScore(delta),
+          delta: submission.delta,
+          score: submission.score,
         },
       };
     case "freeMode":
@@ -79,20 +75,6 @@ export default function Home() {
     userInputColor: initColor,
     userAlternativeColor: initColor,
   });
-  const [totalScore, setTotalScore] = useState(0);
-
-  const updateTotalScore = () => {
-    if (appState.type === "answer") {
-      const score = calcScore(
-        calcDeltaE00(appState.userInputColor, appState.colorInQuestion)
-      );
-      setTotalScore((prev) => prev + score);
-    }
-    if (isProblemLastState(appState)) {
-      setTotalScore(0);
-    }
-  };
-
   return (
     <main>
       <div className={styles["top-half"]}>
@@ -126,10 +108,7 @@ export default function Home() {
           <div className={styles["centering-container"]}>
             <button
               type="button"
-              onClick={() => {
-                dispatch({ type: "forward" });
-                updateTotalScore();
-              }}
+              onClick={() => dispatch({ type: "forward" })}
               className={styles["transition-button"]}
             >
               {getButtonText(appState)}
@@ -146,9 +125,11 @@ export default function Home() {
           }
           maxVal={N_PROBLEMS}
         />
-        {isProblemLastState(appState) && (
+        {appState.type === "answer" && isProblemLastState(appState) && (
           <div className={styles["evaluation"]}>
-            {`Total Score: ${totalScore.toFixed(1)} ${calcRank(totalScore)}`}
+            {`Total Score: ${appState.totalScore.toFixed(1)} ${calcRank(
+              appState.totalScore
+            )}`}
           </div>
         )}
       </div>
